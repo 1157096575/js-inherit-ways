@@ -13,7 +13,7 @@
 # 例如：
 
 function Animal() {}
-Person.prototype.MAX_AGE = 25;
+Animal.prototype.MAX_AGE = 25;
 var animal = new Animal();
 
 因为animal可以访问自身__proto__属性指向的对象的属性，
