@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+        * 继承方式1:
+        * 默认的原型继承
+        * */
+        function Animal(name) {
+            this.name = name;
+        }
+
+        Animal.prototype.fly = function () {
+            console.log(this.name + ' can fly.');
+        };
+
+        // bird 继承 Animal.prototype 指向的原型
+        // bird 继承 bird.__proto__指向的原型(自己的隐式原型)
+        // 通常我们说 对象 继承自 自己原型对象(隐式原型)
+        var bird = new Animal('White Bird');
+        bird.fly();
+    </script>
+</body>
+</html>

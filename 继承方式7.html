@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+         * 需求：
+         * 已存在一个Person类，要求实现一个Student类，
+         * 通过这个类创建一个实例，
+         * 要求实例可以访问Person原型上的属性。
+         *
+         * 注意：
+         * 1、不能把Student.prototype直接修改为已存在的对象
+         * 2、不能使用extend(这种方式比较推荐，但是为了引出新的继承方式，不得不这么要求)
+         * 3、不能使用Object.create
+         * */
+
+        /*
+         * 解决方案，使用继承方式7：
+         * 原型组合式继承。(可以认为这是类式继承)。
+         * */
+
+        function Person() {
+
+        }
+
+        Person.prototype.run = function () {
+            console.log('跑');
+        };
+
+        function Student(name) {
+            this.name = name;
+        }
+
+        // 建议这么做
+        /*extend(Student.prototype, Person.prototype);*/
+
+        /*Student.prototype = Object.create(Person.prototype);*/
+
+        // 继承方式7的关键代码，原理类似与继承方式6
+        Student.prototype = new Person();
+
+        var liXiaoLong = new Student('黎小龙');
+        // 可以访问Person上的run方法了
+        liXiaoLong.run();
+
+    </script>
+</body>
+</html>

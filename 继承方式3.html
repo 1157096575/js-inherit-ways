@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+        * 继承方式3：
+        * copy继承。
+        * */
+
+        // 实现copy继承，需要下面这个函数来完成
+        function extend(obj1, obj2) {
+
+            // 把obj2对象里的所有属性复制到obj1上
+            for (var key in obj2) {
+                obj1[key] = obj2[key];
+            }
+        }
+
+        var o = {
+            val : 10,
+            age : 5
+        };
+
+        var obj = {
+            color : 'red'
+        };
+
+        // 把o对象里面的属性复制到obj上
+        extend(obj, o);
+        console.log(obj.color);
+
+        // copy之后，obj可以使用age属性了
+        console.log(obj.age);
+        console.log(obj);
+    </script>
+</body>
+</html>

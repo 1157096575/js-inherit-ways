@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+        * 继承方式5：
+        * Object.create
+        * 这个方法是一个内置的工厂函数。
+        * 语法：Object.create(传入要继承的对象);
+        * return：返回一个新对象，新对象继承你传入的对象。
+        * */
+
+        /*var o = new Object();
+        // 实例不能使用类上定义的属性，所以结果为undefined
+        console.log(o.create);*/
+
+        var $ = {
+            id : function (id) {
+                return document.getElementById(id);
+            },
+            name : function (name) {
+                return document.getElementsByTagName(name);
+            }
+        };
+
+        // ES5才有了这个方法，所以IE8之前不支持
+        // obj继承$(即obj.__proto__ == $)
+        var obj = Object.create($);
+        console.log(obj.id);
+    </script>
+</body>
+</html>

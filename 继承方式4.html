@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 实现copy继承，需要下面这个函数来完成
+        function extend(obj1, obj2) {
+
+            // 把obj2对象里的所有属性复制到obj1上
+            for (var key in obj2) {
+                obj1[key] = obj2[key];
+            }
+        }
+
+
+        /*
+        * 继承方式4：
+        * copy加原型的组合。
+        * */
+
+        var obj = {
+            eat: function () {
+                console.log('饭量比较小');
+            },
+            run: function () {
+                console.log('正常奔跑');
+            }
+        };
+
+        function Animal(age) {
+            this.age = age;
+        }
+
+        // 把obj对象上的属性复制到Animal.prototype上
+        extend(Animal.prototype, obj);
+
+        Animal.prototype.run = function () {
+            if (this.age < 3) {
+                console.log('奔跳跑');
+            }else {
+                console.log('飞跑');
+            }
+        };
+
+        var shuLan = new Animal(5);
+        shuLan.run();
+        obj.run();
+
+    </script>
+</body>
+</html>

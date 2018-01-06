@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+        * 继承方式2：
+        * 原型覆写。
+        * */
+
+        function Animal(age) {
+            this.age = age;
+        }
+
+        // 这是添加给类自己的属性，实例无法使用
+        Animal.value = 10;
+
+        // 对构造函数的原型属性进行覆写
+        Animal.prototype = {
+            // 这种方式，构造函数的原型上的constructor属性会丢失，
+            // 最好自己手动补一下，不补也无大碍。
+            constructor: Animal,
+            eat: function () {
+                if (this.age < 3) {
+                    console.log('饭量比较小');
+                }else {
+                    console.log('饭量比较大');
+                }
+            },
+            run: function () {
+                if (this.age < 3) {
+                    console.log('不会奔跑');
+                }else {
+                    console.log('正常奔跑');
+                }
+            }
+        };
+
+        var shuLan = new Animal(5);
+        shuLan.eat();
+        shuLan.run();
+        console.log(shuLan.constructor);
+        console.log(shuLan.value);// undefined，无法访问类上的属性，只能访问自己的，或者继承的
+        console.log(shuLan.run);
+
+        // 注：在覆写原型时，不要使用已经存在的对象
+        // 这种方式，把对象的方法也跟着一起改了，所以这种方式存在隐患，尽量别使用。
+    </script>
+</body>
+</html>

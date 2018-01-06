@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+        * 继承：
+        * 一个对象可以使用本不属于自己的属性，那么就说这个对象继承了这些属性。
+        * 主流的面向对象编程语言他们的继承是类与类之间的继承;
+        * 在ES6之前，js的继承是对象与对象之间的继承。
+        * */
+
+        function Animal() {}
+        Person.prototype.MAX_AGE = 25;
+
+        // 例如：
+        // 因为animal可以访问自身__proto__属性指向的对象的属性，
+        // 我们就说animal继承自它的隐式原型。
+        var animal = new Animal();
+
+    </script>
+</body>
+</html>

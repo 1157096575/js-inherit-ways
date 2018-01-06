@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+        * 需求：
+        * 已存在一个对象，要求实现一个Student类，
+        * 通过这个类创建一个实例，
+        * 要求实例可以访问已存在对象上的属性。
+        *
+        * 注意：
+        * 1、不能把Student.prototype直接修改为已存在的对象
+        * 2、不能使用extend(这种方式比较推荐，但是为了引出新的继承方式，不得不这么要求)
+        * */
+
+        /*
+        * 解决方案，使用继承方式6：
+        * Object.create加原型的组合继承
+        * */
+        var $ = {
+            id : function (id) {
+                return document.getElementById(id);
+            },
+            name : function (name) {
+                return document.getElementsByTagName(name);
+            }
+        };
+
+        function Student(name) {
+            this.name = name;
+        }
+
+        // 建议采用这种方式
+        /*extend(Student.prototype, $);*/
+
+        // 继承方式6的关键代码
+        Student.prototype = Object.create($);
+
+        // liXiaoLong继承Object.create创建的对象，
+        // Object.create创建的对象继承$,
+        // 也就是说liXiaoLong间接继承了$。
+        var liXiaoLong = new Student('黎小龙');
+        console.log(liXiaoLong.name);
+        // 可以访问$对象上定义的id方法
+        console.log(liXiaoLong.id);
+    </script>
+</body>
+</html>
