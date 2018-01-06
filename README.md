@@ -1,7 +1,6 @@
 # 继承：
 
 > 什么是继承
-
 ## 
 
 ``` bash
@@ -22,7 +21,6 @@ var animal = new Animal();
 
 
 > javascript的几种继承方式
-
 ## 
 
 ``` bash
